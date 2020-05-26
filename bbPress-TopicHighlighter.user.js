@@ -6,6 +6,8 @@
 // @author       Ethan Christensen
 // @match        https://wordpress.com/forums/*
 // @grant        none
+// @updateURL     https://raw.githubusercontent.com/ethanchristensen01/Ethan-Snippets/master/bbPress-TopicHighlighter.user.js
+// @downloadURL   https://raw.githubusercontent.com/ethanchristensen01/Ethan-Snippets/master/bbPress-TopicHighlighter.user.js
 // ==/UserScript==
 
 (function() {
