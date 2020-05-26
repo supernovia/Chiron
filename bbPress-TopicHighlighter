@@ -1,6 +1,5 @@
 // ==UserScript==
-// @require      http://code.jquery.com/jquery-3.5.0.min.js
-// @name         Topic Highlighter for bbPress
+// @name         Topic Highlighter for bbPress / WordPress.com Forums
 // @namespace    https://emc.code.blog
 // @version      1.0
 // @description  Add a colored flag to each post which matches a list of keywords
@@ -15,20 +14,18 @@
     jQuery.expr[':'].icontains = function(a, i, m) {
         return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
     };
-    //Topic class
     class Topic {
         constructor(color, keywords) {
             this.color = color;
             this.keywords = keywords;
         }
-        query(classToSearch) {
-            let selectors = this.keywords.map(topic => `${classToSearch}:icontains('${topic}')`).join(', ');
+        query(searchClass) {
+            let selectors = this.keywords.map(topic => `${searchClass}:icontains('${topic}')`).join(', ');
             return jQuery(`${selectors}`);
         }
-        highlight(classToSearch, parentClass) {
-            let query = this.query(classToSearch);
+        highlight(searchClass, parentClass) {
+            let query = this.query(searchClass);
             let color = this.color;
-            console.log(query);
             query.each(
                 function() {
                     //in case we decide to add class instead of changing css: jQuery(this).closest('.topic').classList.add(this.topicClass);
@@ -37,17 +34,20 @@
             );
         }
     }
-    //Change colors and keywords for each priority here
+    /*
+    Change colors and keywords for each priority here
+    */
     const Topics = [
-        new Topic('#000', ['theme', 'widget', 'color', 'menu', 'tab', 'css', 'header', 'template', 'editor']),
-        new Topic('blue', ['jet', 'woo', 'grav', 'vault', 'akismet', 'spam']),
-        new Topic('lime', ['restor', 'recover']),
-        new Topic('orange', ['account', 'login', 'log in', 'suspend', 'report', 'ads', 'application', 'confirmation', 'password']),
-        new Topic('red', ['dns', 'domain', 'cancel', 'refund', 'bill', 'charge', 'card', 'url'])
+        /* last is most important */
+        /* .org probably or atomic */ new Topic('#ffea00', ['plugin', 'offline', 'error', 'host', 'godaddy']),
+        /* customization */ new Topic('#0099FF', ['theme', 'customi', 'design', 'widget', 'color', 'menu', 'tab', 'css', 'header', 'template', 'editor', 'font']),
+        /* JPOP, WOO */ new Topic('#66CC33', ['jet', 'woo', 'grav', 'vault', 'akismet', 'spam', 'avatar', 'export', 'import']),
+        /* accounts, TOS, etc */ new Topic('#ff9d00', ['account', 'hara', 'abuse', 'harra', 'login', 'log in', 'suspend', 'report', 'ads', 'application', 'conf', 'password', 'access', 'old', 'restor', 'recover', 'deleted']),
+        /* domains and billing */ new Topic('#CC0055', ['dns', 'domain', 'cancel', 'refund', 'bill', 'charge', 'url', 'postal', 'pay', 'renew', 'plan', 'currency', 'west', 'wwd'])
     ]
+
     for(var topicIndex in Topics){
         let topic = Topics[topicIndex];
-        console.log(topic[0]);
         topic.highlight('.bbp-topic-title', '.topic');
     }
 })();
