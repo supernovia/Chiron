@@ -41,11 +41,11 @@
     */
     const Topics = [
         /* last is most important */
-        /* .org probably or atomic */ new Topic('#ffea00', ['plugin', 'offline', 'error', 'host', 'godaddy']),
-        /* customization */ new Topic('#0099FF', ['theme', 'customi', 'design', 'widget', 'color', 'menu', 'tab', 'css', 'header', 'template', 'editor', 'font']),
-        /* JPOP, WOO */ new Topic('#66CC33', ['jet', 'woo', 'grav', 'vault', 'akismet', 'spam', 'avatar', 'export', 'import']),
-        /* accounts, TOS, etc */ new Topic('#ff9d00', ['account', 'hara', 'abuse', 'harra', 'login', 'log in', 'suspend', 'report', 'ads', 'application', 'conf', 'password', 'access', 'old', 'restor', 'recover', 'deleted']),
-        /* domains and billing */ new Topic('#CC0055', ['dns', 'domain', 'cancel', 'refund', 'bill', 'charge', 'url', 'postal', 'pay', 'renew', 'plan', 'currency', 'west', 'wwd'])
+        /* Yellow: .org probably or atomic */ new Topic('#ffea00', ['plugin', 'offline', 'error', 'host', 'godaddy', 'internal', 'server', 'php', 'htaccess', 'Malware', 'virus', 'hack']),
+        /* Blue: customization */ new Topic('#0099FF', ['theme', 'customi', 'design', 'widget', 'color', 'menu', 'tab', 'css', 'header', 'template', 'editor', 'font', 'button', 'categor', 'static', 'read more']),
+        /* Green: JPOP, WOO, exports, imports */ new Topic('#66CC33', ['jet', 'woo', 'grav', 'vault', 'akismet', 'spam', 'avatar', 'export', 'import', 'migrat', 'RPC', 'Twitter', 'Instagram', 'FB', 'Facebook', 'likes', 'comment']),
+        /* Orange: accounts, TOS, etc */ new Topic('#ff9d00', ['account', 'hara', 'abuse', 'harra', 'login', 'log in', 'suspen', 'report', 'ads', 'application', 'conf', 'password', 'access', 'old', 'restor', 'recover', 'reset', 'deleted']),
+        /* Red: domains, payments, and billing */ new Topic('#CC0055', ['dns', 'domain', 'cancel', 'refund', 'bill', 'charg', 'url', 'postal', 'pay', 'renew', 'plan', 'currency', 'west', 'wwd', 'pric'])
     ]
 
     for(var topicIndex in Topics){
